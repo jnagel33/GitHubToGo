@@ -8,9 +8,10 @@
 
 import UIKit
 
-class RepoSearchViewController: UITableViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
 
   @IBOutlet weak var searchBar: UISearchBar!
+  var tapGestureRecognizer: UITapGestureRecognizer?
   
   var repositories = [Repository]()
   let gitHubService = GitHubService()
@@ -19,21 +20,16 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate, UITa
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Repository Search"
+    self.navigationItem.backBarButtonItem?.title = "Main"
     self.tableView.delegate = self
     self.tableView.dataSource = self
     self.searchBar.delegate = self
-    
-    var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
-    self.view.addGestureRecognizer(tapGestureRecognizer)
   }
   
-  func dismissKeyboard(tap: UIGestureRecognizer?) {
+  func dismissKeyboard() {
     self.searchBar.resignFirstResponder()
-    if let recognizers = self.view.gestureRecognizers {
-      for recognizer in recognizers {
-        self.view.removeGestureRecognizer(recognizer as! UIGestureRecognizer)
-      }
-    }
+    self.view.removeGestureRecognizer(self.tapGestureRecognizer!)
+//    self.tapGestureRecognizer = nil
   }
   
   //MARK:
@@ -62,7 +58,7 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate, UITa
   //MARK: UISearchBarDelagate
   
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-    self.dismissKeyboard(nil)
+    self.dismissKeyboard()
     gitHubService.getRepositorySearchResults(searchBar.text, completionHandler: { [weak self] (repositories, error) -> Void in
       if self != nil {
         if error != nil {
@@ -75,13 +71,24 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate, UITa
     })
   }
   
-//  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//  }
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    if count(searchText) >= 5 {
+      gitHubService.getRepositorySearchResults(searchBar.text, completionHandler: { [weak self] (repositories, error) -> Void in
+        if self != nil {
+          if error != nil {
+            print(error)
+          } else {
+            self!.repositories = repositories!
+            self!.tableView.reloadData()
+          }
+        }
+      })
+    }
+  }
   
   func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
-    var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
-    self.view.addGestureRecognizer(tapGestureRecognizer)
+    tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    self.view.addGestureRecognizer(self.tapGestureRecognizer!)
     return true
   }
 
@@ -94,5 +101,4 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate, UITa
       navigationController!.selectedRepository = self.selectedRepository
     }
   }
-  
 }

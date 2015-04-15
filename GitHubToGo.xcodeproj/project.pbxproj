@@ -12,7 +12,7 @@
 		4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10B1ADC8C4C00070604 /* Images.xcassets */; };
 		4387C10F1ADC8C4C00070604 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10D1ADC8C4C00070604 /* LaunchScreen.xib */; };
 		4387C11B1ADC8C4C00070604 /* GitHubToGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C11A1ADC8C4C00070604 /* GitHubToGoTests.swift */; };
-		4387C1251ADC8DF500070604 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1241ADC8DF500070604 /* HomeViewController.swift */; };
+		4387C1251ADC8DF500070604 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1241ADC8DF500070604 /* MainMenuViewController.swift */; };
 		4387C1271ADC8FB200070604 /* RepoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */; };
 		4387C1291ADC906B00070604 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1281ADC906B00070604 /* Repository.swift */; };
 		4387C12B1ADC914400070604 /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C12A1ADC914400070604 /* GitHubService.swift */; };
@@ -50,7 +50,7 @@
 		4387C1141ADC8C4C00070604 /* GitHubToGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubToGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387C1191ADC8C4C00070604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387C11A1ADC8C4C00070604 /* GitHubToGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubToGoTests.swift; sourceTree = "<group>"; };
-		4387C1241ADC8DF500070604 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4387C1241ADC8DF500070604 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSearchViewController.swift; sourceTree = "<group>"; };
 		4387C1281ADC906B00070604 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		4387C12A1ADC914400070604 /* GitHubService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				4387C1601ADD71C300070604 /* UserSearchViewController.swift */,
 				4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */,
 				4387C16F1ADDA5C500070604 /* RepoDetailsViewController.swift */,
-				4387C1241ADC8DF500070604 /* HomeViewController.swift */,
+				4387C1241ADC8DF500070604 /* MainMenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 				4387C1631ADD798C00070604 /* UserSearchCollectionViewCell.swift in Sources */,
 				4387C12B1ADC914400070604 /* GitHubService.swift in Sources */,
 				4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */,
-				4387C1251ADC8DF500070604 /* HomeViewController.swift in Sources */,
+				4387C1251ADC8DF500070604 /* MainMenuViewController.swift in Sources */,
 				4387C1691ADD89BF00070604 /* ImageService.swift in Sources */,
 				4387C1271ADC8FB200070604 /* RepoSearchViewController.swift in Sources */,
 				4387C1611ADD71C300070604 /* UserSearchViewController.swift in Sources */,
