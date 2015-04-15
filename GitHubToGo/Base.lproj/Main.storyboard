@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main Menu-->
+        <!--Menu-->
         <scene sceneID="A17-Uk-YLi">
             <objects>
                 <tableViewController id="x3L-o0-Zmo" customClass="MainMenuViewController" customModule="GitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                             <outlet property="delegate" destination="x3L-o0-Zmo" id="rZu-gQ-lf6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Main Menu" id="S03-p3-vav"/>
+                    <navigationItem key="navigationItem" title="Menu" id="S03-p3-vav"/>
                     <connections>
                         <outlet property="tableView" destination="Q7L-eu-aeH" id="A2J-I0-U8E"/>
                     </connections>

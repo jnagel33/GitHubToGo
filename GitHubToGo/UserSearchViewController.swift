@@ -20,7 +20,6 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "User Search"
-    self.navigationItem.backBarButtonItem?.title = "Main"
     
     self.collectionView.dataSource = self
     self.collectionView.delegate = self

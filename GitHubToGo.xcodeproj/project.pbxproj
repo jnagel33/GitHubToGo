@@ -10,7 +10,6 @@
 		4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1041ADC8C4C00070604 /* AppDelegate.swift */; };
 		4387C10A1ADC8C4C00070604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4387C1081ADC8C4C00070604 /* Main.storyboard */; };
 		4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10B1ADC8C4C00070604 /* Images.xcassets */; };
-		4387C10F1ADC8C4C00070604 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10D1ADC8C4C00070604 /* LaunchScreen.xib */; };
 		4387C11B1ADC8C4C00070604 /* GitHubToGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C11A1ADC8C4C00070604 /* GitHubToGoTests.swift */; };
 		4387C1251ADC8DF500070604 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1241ADC8DF500070604 /* MainMenuViewController.swift */; };
 		4387C1271ADC8FB200070604 /* RepoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */; };
@@ -46,7 +45,6 @@
 		4387C1041ADC8C4C00070604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4387C1091ADC8C4C00070604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4387C10B1ADC8C4C00070604 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4387C10E1ADC8C4C00070604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4387C1141ADC8C4C00070604 /* GitHubToGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubToGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387C1191ADC8C4C00070604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387C11A1ADC8C4C00070604 /* GitHubToGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubToGoTests.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				4387C16D1ADD9E6300070604 /* Controller */,
 				4387C16E1ADD9E7300070604 /* Model */,
 				4387C10B1ADC8C4C00070604 /* Images.xcassets */,
-				4387C10D1ADC8C4C00070604 /* LaunchScreen.xib */,
 				4387C1021ADC8C4C00070604 /* Supporting Files */,
 			);
 			path = GitHubToGo;
@@ -262,7 +259,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4387C10A1ADC8C4C00070604 /* Main.storyboard in Resources */,
-				4387C10F1ADC8C4C00070604 /* LaunchScreen.xib in Resources */,
 				4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,14 +322,6 @@
 				4387C1091ADC8C4C00070604 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4387C10D1ADC8C4C00070604 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4387C10E1ADC8C4C00070604 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
