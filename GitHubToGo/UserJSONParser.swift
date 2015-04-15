@@ -25,4 +25,22 @@ class UserJSONParser {
     }
     return users
   }
+  
+  
+  class func getUserFromJSONData(data: NSData) -> User {
+    var error: NSError?
+    var returnUser: User?
+    
+    if let userInfo = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [String: AnyObject],
+         id = userInfo["id"] as? Int,
+      login = userInfo["login"] as? String,
+  avatarUrl = userInfo["avatar_url"] as? String,
+    company = userInfo["company"] as? String,
+        bio = userInfo["bio"] as? String,
+  followers = userInfo["followers"] as? Int {
+        let user = User(id: id, login: login, avatarUrl: avatarUrl)
+        returnUser = user
+    }
+    return returnUser!
+  }
 }

@@ -12,6 +12,7 @@ class GitHubService {
   
   private let searchRepositoriesURL = "https://api.github.com/search/repositories"
   private let searchUsersURL = "https://api.github.com/search/users"
+  private let userURL = "https://api.github.com/users"
   
   func getRepositorySearchResults(searchText: String, completionHandler: ([Repository]?, String?) -> Void) {
     if let encodedSearchText = searchText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
@@ -63,4 +64,26 @@ class GitHubService {
     }
   }
   
+  func getUser(username: String, completionHandler: (User?, String) -> Void) {
+    let accessToken = NSUserDefaults.standardUserDefaults().valueForKey("accessToken") as? String
+    let urlStr = self.searchUsersURL + "?access_token=\(accessToken!)&username=\(username)"
+    let url = NSURL(string: urlStr)
+    let requestUrl = NSURLRequest(URL: url!)
+    let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
+      if error != nil {
+        // handle error
+      } else {
+        
+        if let httpResponse = response as? NSHTTPURLResponse {
+          if httpResponse.statusCode == 200 {
+            let users = UserJSONParser.getUserFromJSONData(data!)
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//              completionHandler(users, nil)
+            })
+          }
+        }
+      }
+    })
+    dataTask.resume()
+  }
 }

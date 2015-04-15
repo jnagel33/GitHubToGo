@@ -20,7 +20,6 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Repository Search"
-    self.navigationItem.backBarButtonItem?.title = "Main"
     self.tableView.delegate = self
     self.tableView.dataSource = self
     self.searchBar.delegate = self
@@ -29,7 +28,6 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
   func dismissKeyboard() {
     self.searchBar.resignFirstResponder()
     self.view.removeGestureRecognizer(self.tapGestureRecognizer!)
-//    self.tapGestureRecognizer = nil
   }
   
   //MARK:

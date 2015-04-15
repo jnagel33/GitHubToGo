@@ -14,6 +14,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   @IBOutlet weak var collectionView: UICollectionView!
   
   var users = [User]()
+  var selectedUser: User?
   let gitHubService = GitHubService()
   var tapGestureRecognizer: UITapGestureRecognizer?
   
@@ -60,8 +61,6 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
           }
         })
     }
-    
-    
     return cell
   }
   
@@ -69,7 +68,9 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   //MARK: UICollectionViewDelegate
   
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    //Add custom transition
+    collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    self.selectedUser = users[indexPath.row]
+    self.performSegueWithIdentifier("ShowUserDetail", sender: self)
   }
   
   //MARK:
@@ -92,5 +93,16 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
     tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
     self.view.addGestureRecognizer(self.tapGestureRecognizer!)
+  }
+  
+  
+  //MARK:
+  //MARK: prepareForSegue
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowUserDetail" {
+      let destinationController = segue.destinationViewController as? SingleUserViewController
+      destinationController!.selectedUser = self.selectedUser
+    }
   }
 }

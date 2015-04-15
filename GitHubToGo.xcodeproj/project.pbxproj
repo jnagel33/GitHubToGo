@@ -27,6 +27,7 @@
 		4387C1721ADDB3CB00070604 /* GitHubKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1711ADDB3CB00070604 /* GitHubKeys.swift */; };
 		4387C1741ADDBA4800070604 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1731ADDBA4800070604 /* LoginViewController.swift */; };
 		4387C1761ADDBB1600070604 /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1751ADDBB1600070604 /* OAuthService.swift */; };
+		4387C1781ADE2F8700070604 /* SingleUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1771ADE2F8700070604 /* SingleUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		4387C1711ADDB3CB00070604 /* GitHubKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubKeys.swift; sourceTree = "<group>"; };
 		4387C1731ADDBA4800070604 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4387C1751ADDBB1600070604 /* OAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
+		4387C1771ADE2F8700070604 /* SingleUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,6 @@
 				4387C1081ADC8C4C00070604 /* Main.storyboard */,
 				4387C12E1ADC9E1100070604 /* RepoSearchTableViewCell.swift */,
 				4387C1621ADD798C00070604 /* UserSearchCollectionViewCell.swift */,
-				4387C1751ADDBB1600070604 /* OAuthService.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -158,6 +159,7 @@
 				4387C1601ADD71C300070604 /* UserSearchViewController.swift */,
 				4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */,
 				4387C16F1ADDA5C500070604 /* RepoDetailsViewController.swift */,
+				4387C1771ADE2F8700070604 /* SingleUserViewController.swift */,
 				4387C1241ADC8DF500070604 /* MainMenuViewController.swift */,
 			);
 			name = Controller;
@@ -166,6 +168,7 @@
 		4387C16E1ADD9E7300070604 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4387C1751ADDBB1600070604 /* OAuthService.swift */,
 				4387C1711ADDB3CB00070604 /* GitHubKeys.swift */,
 				4387C16A1ADD8B6C00070604 /* ImageResizer.swift */,
 				4387C1681ADD89BF00070604 /* ImageService.swift */,
@@ -227,6 +230,7 @@
 				TargetAttributes = {
 					4387C0FE1ADC8C4C00070604 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = DU643WSPQQ;
 					};
 					4387C1131ADC8C4C00070604 = {
 						CreatedOnToolsVersion = 6.3;
@@ -282,6 +286,7 @@
 				4387C1631ADD798C00070604 /* UserSearchCollectionViewCell.swift in Sources */,
 				4387C12B1ADC914400070604 /* GitHubService.swift in Sources */,
 				4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */,
+				4387C1781ADE2F8700070604 /* SingleUserViewController.swift in Sources */,
 				4387C1251ADC8DF500070604 /* MainMenuViewController.swift in Sources */,
 				4387C1691ADD89BF00070604 /* ImageService.swift in Sources */,
 				4387C1271ADC8FB200070604 /* RepoSearchViewController.swift in Sources */,
@@ -414,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GitHubToGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GitHubToGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
