@@ -29,7 +29,7 @@ class User {
     self.avatarUrl = avatarUrl
   }
   
-  init(id: Int, login: String, avatarUrl: String, name: String?, email: String?, company: String?, location: String?, bio: String?, followers: Int, hireable: Bool?) {
+  init(id: Int, login: String, avatarUrl: String, name: String?, email: String?, company: String?, location: String?, bio: String?, followers: Int?, hireable: Bool?) {
     self.id = id
     self.login = login
     self.avatarUrl = avatarUrl

@@ -23,7 +23,7 @@ class OAuthService {
       let urlStr = "https://github.com/login/oauth/access_token?\(accessCode)&client_id=\(kClientID)&client_secret=\(kClientSecret)"
       let url = NSURL(string: urlStr)
       var requestURL = NSMutableURLRequest(URL: url!)
-      requestURL.HTTPMethod = "POST"
+      requestURL.HTTPMethod = "POST"    
       
       requestURL.setValue("application/json", forHTTPHeaderField: "Accept")
       

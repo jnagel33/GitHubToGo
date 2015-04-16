@@ -353,6 +353,7 @@
                         <outlet property="backgroundProfileView" destination="K1q-dt-zlX" id="8uO-rf-sJm"/>
                         <outlet property="emailIcon" destination="ajg-kV-CQl" id="wtS-Su-qU8"/>
                         <outlet property="emailLabel" destination="NAX-ts-6dH" id="vAe-og-OcU"/>
+                        <outlet property="locationIcon" destination="dL5-av-cVX" id="PFD-ap-n0O"/>
                         <outlet property="locationLabel" destination="kP4-wu-eHD" id="D8P-Xe-Yje"/>
                         <outlet property="loginLabel" destination="sle-qf-058" id="aFw-za-tkt"/>
                         <outlet property="nameLabel" destination="doE-1s-vFI" id="JPe-n6-gn9"/>

@@ -17,15 +17,27 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   let gitHubService = GitHubService()
   var tapGestureRecognizer: UITapGestureRecognizer?
   var avatarImageViewSize = CGSize(width: 100, height: 100)
+  let avatarImageViewCornerRadius: CGFloat = 40
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "User Search"
     
-    self.navigationController!.delegate = self
     self.collectionView.dataSource = self
     self.collectionView.delegate = self
     self.searchBar.delegate = self
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    self.navigationController!.delegate = self
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    self.navigationController!.delegate = nil
   }
   
   func dismissKeyboard(tap: UIGestureRecognizer?) {
@@ -48,7 +60,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     
     cell.avatarImageView.image = nil
     cell.loginNameLabel.text = nil
-    cell.avatarImageView.layer.cornerRadius = 40
+    cell.avatarImageView.layer.cornerRadius = self.avatarImageViewCornerRadius
     cell.avatarImageView.layer.masksToBounds = true
     
     let user = users[indexPath.row]
@@ -121,7 +133,6 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     }
     return nil
   }
-  
   
   //MARK:
   //MARK: prepareForSegue

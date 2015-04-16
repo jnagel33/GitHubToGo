@@ -50,7 +50,6 @@ class GitHubService {
         if error != nil {
           // handle error
         } else {
-          
           if let httpResponse = response as? NSHTTPURLResponse {
             if httpResponse.statusCode == 200 {
               let users = UserJSONParser.getUsersFromJSONData(data!)
@@ -65,40 +64,18 @@ class GitHubService {
     }
   }
   
-  func getUser(username: String, completionHandler: (User?, String?) -> Void) {
+  func getUser(login: String?, completionHandler: (User?, String?) -> Void) {
     let accessToken = NSUserDefaults.standardUserDefaults().valueForKey("accessToken") as? String
-    let urlStr = self.userURL + "/\(username)?access_token=\(accessToken!)"
+    var urlStr = "\(self.authenticatedUserURL)?access_token=\(accessToken!)"
+    if let username = login {
+      urlStr = self.userURL + "/\(username)?access_token=\(accessToken!)"
+    }
     let url = NSURL(string: urlStr)
     let requestUrl = NSURLRequest(URL: url!)
     let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
       if error != nil {
         // handle error
       } else {
-        
-        if let httpResponse = response as? NSHTTPURLResponse {
-          if httpResponse.statusCode == 200 {
-            let user = UserJSONParser.getUserFromJSONData(data!)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-              completionHandler(user, nil)
-            })
-          }
-        }
-      }
-    })
-    dataTask.resume()
-  }
-  
-  func getAuthenticatedUser(completionHandler: (User?, String?) -> Void) {
-    //TODO try to grab token but if its not there still allow them to make request
-    let accessToken = NSUserDefaults.standardUserDefaults().valueForKey("accessToken") as? String
-    let urlStr = self.authenticatedUserURL + "?access_token=\(accessToken!)"
-    let url = NSURL(string: urlStr)
-    let requestUrl = NSURLRequest(URL: url!)
-    let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        // handle error
-      } else {
-        
         if let httpResponse = response as? NSHTTPURLResponse {
           if httpResponse.statusCode == 200 {
             let user = UserJSONParser.getUserFromJSONData(data!)
