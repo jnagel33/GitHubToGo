@@ -128,8 +128,4 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
       destinationController.isAuthenticatedUser = false
     }
   }
-  
-  override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-    <#code#>
-  }
 }
