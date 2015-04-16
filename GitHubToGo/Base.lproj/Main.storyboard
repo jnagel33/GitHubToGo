@@ -268,13 +268,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" translatesAutoresizingMaskIntoConstraints="NO" id="doE-1s-vFI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" translatesAutoresizingMaskIntoConstraints="NO" id="doE-1s-vFI">
                                 <rect key="frame" x="16" y="286" width="568" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" translatesAutoresizingMaskIntoConstraints="NO" id="kP4-wu-eHD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" translatesAutoresizingMaskIntoConstraints="NO" id="kP4-wu-eHD">
                                 <rect key="frame" x="55" y="371" width="529" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -294,13 +294,13 @@
                                     <constraint firstAttribute="height" constant="20" id="dCU-Cb-qGw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" translatesAutoresizingMaskIntoConstraints="NO" id="NAX-ts-6dH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75000000000000022" translatesAutoresizingMaskIntoConstraints="NO" id="NAX-ts-6dH">
                                 <rect key="frame" x="55" y="409" width="529" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sle-qf-058">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sle-qf-058">
                                 <rect key="frame" x="24" y="318" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -314,7 +314,6 @@
                             <constraint firstItem="ajg-kV-CQl" firstAttribute="top" secondItem="dL5-av-cVX" secondAttribute="bottom" constant="13" id="Aof-NN-lPE"/>
                             <constraint firstItem="DF2-eQ-CaC" firstAttribute="bottom" secondItem="K1q-dt-zlX" secondAttribute="bottom" id="Cp7-Fo-pcY"/>
                             <constraint firstItem="doE-1s-vFI" firstAttribute="trailing" secondItem="16x-5k-Jdd" secondAttribute="trailingMargin" id="Des-Kc-5lE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="K1q-dt-zlX" secondAttribute="trailing" constant="-16" id="Dvj-Nt-3kr"/>
                             <constraint firstItem="NAX-ts-6dH" firstAttribute="leading" secondItem="ajg-kV-CQl" secondAttribute="trailing" constant="14" id="HYc-Ng-BTa"/>
                             <constraint firstItem="dL5-av-cVX" firstAttribute="leading" secondItem="DF2-eQ-CaC" secondAttribute="trailing" constant="8" id="KCn-1y-u2F"/>
                             <constraint firstItem="DF2-eQ-CaC" firstAttribute="top" secondItem="K1q-dt-zlX" secondAttribute="top" id="KZx-SA-Hzy"/>
@@ -324,9 +323,10 @@
                             <constraint firstItem="sle-qf-058" firstAttribute="top" secondItem="doE-1s-vFI" secondAttribute="bottom" constant="8" id="T7H-wb-c7f"/>
                             <constraint firstItem="sle-qf-058" firstAttribute="leading" secondItem="16x-5k-Jdd" secondAttribute="leadingMargin" constant="8" id="V2l-HM-Q3f"/>
                             <constraint firstItem="NAX-ts-6dH" firstAttribute="trailing" secondItem="16x-5k-Jdd" secondAttribute="trailingMargin" id="Vde-fd-rdo"/>
-                            <constraint firstItem="K1q-dt-zlX" firstAttribute="leading" secondItem="16x-5k-Jdd" secondAttribute="leadingMargin" constant="-16" id="Z99-oo-gaF"/>
+                            <constraint firstItem="K1q-dt-zlX" firstAttribute="width" secondItem="16x-5k-Jdd" secondAttribute="width" id="Wy1-3E-32U"/>
                             <constraint firstItem="dL5-av-cVX" firstAttribute="top" secondItem="sle-qf-058" secondAttribute="bottom" constant="26" id="ZC5-9O-dQy"/>
                             <constraint firstItem="doE-1s-vFI" firstAttribute="top" secondItem="DF2-eQ-CaC" secondAttribute="bottom" constant="22" id="aQ1-GI-JRk"/>
+                            <constraint firstAttribute="centerX" secondItem="K1q-dt-zlX" secondAttribute="centerX" id="az6-Cj-h2a"/>
                             <constraint firstAttribute="centerX" secondItem="DF2-eQ-CaC" secondAttribute="centerX" id="chK-nV-5cj"/>
                             <constraint firstItem="sle-qf-058" firstAttribute="trailing" secondItem="16x-5k-Jdd" secondAttribute="trailingMargin" id="f9g-NI-dGB"/>
                             <constraint firstItem="DF2-eQ-CaC" firstAttribute="leading" secondItem="16x-5k-Jdd" secondAttribute="leadingMargin" constant="-16" id="fqR-ec-0sr"/>
@@ -350,6 +350,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundProfileView" destination="K1q-dt-zlX" id="8uO-rf-sJm"/>
+                        <outlet property="emailIcon" destination="ajg-kV-CQl" id="wtS-Su-qU8"/>
                         <outlet property="emailLabel" destination="NAX-ts-6dH" id="vAe-og-OcU"/>
                         <outlet property="locationLabel" destination="kP4-wu-eHD" id="D8P-Xe-Yje"/>
                         <outlet property="loginLabel" destination="sle-qf-058" id="aFw-za-tkt"/>
@@ -428,13 +430,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="xIE-wh-UOL" secondAttribute="trailing" constant="-16" id="CDJ-cC-c6W"/>
-                            <constraint firstItem="xIE-wh-UOL" firstAttribute="leading" secondItem="a3M-7c-sxe" secondAttribute="leadingMargin" constant="-16" id="NdK-ow-I1c"/>
                             <constraint firstItem="xIE-wh-UOL" firstAttribute="top" secondItem="4IK-c4-3Pt" secondAttribute="bottom" id="Ug6-36-yJa"/>
                             <constraint firstAttribute="bottom" secondItem="xIE-wh-UOL" secondAttribute="bottom" id="awD-sL-ZUW"/>
                             <constraint firstItem="4IK-c4-3Pt" firstAttribute="top" secondItem="uuu-xE-o6f" secondAttribute="bottom" id="ctn-HQ-bst"/>
+                            <constraint firstAttribute="centerX" secondItem="xIE-wh-UOL" secondAttribute="centerX" id="fCv-um-zyP"/>
                             <constraint firstItem="4IK-c4-3Pt" firstAttribute="leading" secondItem="a3M-7c-sxe" secondAttribute="leading" id="fqJ-Da-exY"/>
                             <constraint firstItem="xIE-wh-UOL" firstAttribute="top" secondItem="4IK-c4-3Pt" secondAttribute="bottom" id="gtN-RC-YyV"/>
+                            <constraint firstAttribute="width" secondItem="xIE-wh-UOL" secondAttribute="width" id="nAV-uX-dXe"/>
                             <constraint firstAttribute="trailing" secondItem="4IK-c4-3Pt" secondAttribute="trailing" id="nMN-7e-lic"/>
                         </constraints>
                     </view>
@@ -456,6 +458,6 @@
         <image name="MessageIcon" width="30" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jip-qt-PvH"/>
+        <segue reference="hyn-hF-2Jj"/>
     </inferredMetricsTieBreakers>
 </document>

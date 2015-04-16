@@ -12,6 +12,7 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
 
   let duration = 0.5
   let imageViewCornerRadius: CGFloat = 100
+  let scaleImageTransform: CGFloat = 2.5
   
   func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
     return duration
@@ -27,22 +28,23 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
     
     let selectedIndexPath = fromVC.collectionView.indexPathsForSelectedItems().first as! NSIndexPath
     let userCell = fromVC.collectionView.cellForItemAtIndexPath(selectedIndexPath) as! UserSearchCollectionViewCell
-    let snapShot = userCell.avatarImageView.snapshotViewAfterScreenUpdates(false)
+    let snapShot = UIImageView(image: fromVC.users[selectedIndexPath.row].avatarImage)
     userCell.hidden = true
     snapShot.frame = containerView.convertRect(userCell.avatarImageView.frame, fromCoordinateSpace: userCell.avatarImageView.superview!)
+    snapShot.layer.cornerRadius = snapShot.frame.width / 2
+    snapShot.layer.masksToBounds = true
     containerView.addSubview(snapShot)
-    toVC.view.layoutIfNeeded() //auto layout
+    toVC.view.layoutIfNeeded()
     
-    let frame = containerView.convertRect(toVC.profileImageView.frame, fromView: toVC.view)
     toVC.profileImageView.hidden = true
     
-    UIView.animateWithDuration(duration, animations: { () -> Void in
+    UIView.animateWithDuration(1.0, animations: { () -> Void in
       toVC.view.alpha = 1
-      snapShot.frame = frame
+      snapShot.transform = CGAffineTransformMakeScale(self.scaleImageTransform, self.scaleImageTransform)
+      snapShot.center = toVC.profileImageView.center
+      
     }) { (finished) -> Void in
       if finished {
-        toVC.profileImageView.layer.cornerRadius = self.imageViewCornerRadius
-        toVC.profileImageView.layer.masksToBounds = true
         toVC.profileImageView.hidden = false
         snapShot.removeFromSuperview()
         userCell.hidden = false
@@ -51,9 +53,5 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
         transitionContext.completeTransition(false)
       }
     }
-    snapShot.frame = frame
-    
-    
   }
-
 }

@@ -63,7 +63,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
               cell.avatarImageView.alpha = 0
               cell.avatarImageView.transform = CGAffineTransformMakeScale(1.3, 1.3)
               user.avatarImage = image
-//              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
+              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
               cell.avatarImageView.image = image
               UIView.animateWithDuration(0.2, animations: { () -> Void in
                 cell.avatarImageView.alpha = 1
