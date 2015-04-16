@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430416C01ADF018E006417DC /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430416BF1ADF018E006417DC /* Launch Screen.xib */; };
+		430416F01ADF40FE006417DC /* ToSingleUserAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */; };
 		4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1041ADC8C4C00070604 /* AppDelegate.swift */; };
 		4387C10A1ADC8C4C00070604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4387C1081ADC8C4C00070604 /* Main.storyboard */; };
 		4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10B1ADC8C4C00070604 /* Images.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430416BF1ADF018E006417DC /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToSingleUserAnimationViewController.swift; sourceTree = "<group>"; };
 		4387C0FF1ADC8C4C00070604 /* GitHubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387C1031ADC8C4C00070604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387C1041ADC8C4C00070604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				4387C1081ADC8C4C00070604 /* Main.storyboard */,
+				430416BF1ADF018E006417DC /* Launch Screen.xib */,
 				4387C12E1ADC9E1100070604 /* RepoSearchTableViewCell.swift */,
 				4387C1621ADD798C00070604 /* UserSearchCollectionViewCell.swift */,
 			);
@@ -157,6 +162,7 @@
 			children = (
 				4387C1731ADDBA4800070604 /* LoginViewController.swift */,
 				4387C1601ADD71C300070604 /* UserSearchViewController.swift */,
+				430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */,
 				4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */,
 				4387C16F1ADDA5C500070604 /* RepoDetailsViewController.swift */,
 				4387C1771ADE2F8700070604 /* SingleUserViewController.swift */,
@@ -264,6 +270,7 @@
 			files = (
 				4387C10A1ADC8C4C00070604 /* Main.storyboard in Resources */,
 				4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */,
+				430416C01ADF018E006417DC /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430416F01ADF40FE006417DC /* ToSingleUserAnimationViewController.swift in Sources */,
 				4387C1721ADDB3CB00070604 /* GitHubKeys.swift in Sources */,
 				4387C12D1ADC95C300070604 /* RepoJSONParser.swift in Sources */,
 				4387C1631ADD798C00070604 /* UserSearchCollectionViewCell.swift in Sources */,

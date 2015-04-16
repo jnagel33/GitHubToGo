@@ -24,10 +24,10 @@ class RepoJSONParser {
             owner = item["owner"] as? [String: AnyObject],
           ownerId = owner["id"] as? Int,
             login = owner["login"] as? String,
-        avatarUrl = owner["avatar_url"] as? String
-        {
+        avatarUrl = owner["avatar_url"] as? String {
+          
           let repository = Repository(id: id, name: name, login: login, htmlURL: url, description: description, score: score, ownerId: ownerId, avatarUrl: avatarUrl)
-            repositories.append(repository)
+          repositories.append(repository)
         }
       }
     }
