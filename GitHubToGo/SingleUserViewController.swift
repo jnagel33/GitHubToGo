@@ -32,10 +32,10 @@ class SingleUserViewController: UIViewController {
           if error != nil {
             //handle error
           } else {
-            self?.profileImageView.alpha = 0
             self!.loginLabel.text = user!.login
             ImageService.sharedService.fetchProfileImage(user!.avatarUrl, completionHandler: { [weak self] (image) -> () in
               if self != nil {
+                self!.profileImageView.alpha = 0
                 user!.avatarImage = image!
 //                let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
                 self!.profileImageView.image = image
@@ -72,6 +72,7 @@ class SingleUserViewController: UIViewController {
             self!.emailLabel.text = user!.email
             
             UIView.animateWithDuration(0.2, animations: { () -> Void in
+              self!.loginLabel.alpha = 1
               self!.nameLabel.alpha = 1
               self!.emailLabel.alpha = 1
               self!.locationLabel.alpha = 1

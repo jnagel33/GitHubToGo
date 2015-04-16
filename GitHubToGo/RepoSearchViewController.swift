@@ -70,17 +70,9 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
   }
   
   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-    if count(searchText) >= 5 {
-      gitHubService.getRepositorySearchResults(searchBar.text, completionHandler: { [weak self] (repositories, error) -> Void in
-        if self != nil {
-          if error != nil {
-            print(error)
-          } else {
-            self!.repositories = repositories!
-            self!.tableView.reloadData()
-          }
-        }
-      })
+    if searchText.isEmpty {
+      self.repositories.removeAll(keepCapacity: false)
+      self.tableView.reloadData()
     }
   }
   

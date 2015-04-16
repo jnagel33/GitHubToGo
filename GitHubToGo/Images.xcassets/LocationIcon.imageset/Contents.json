@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "RepoIcon.png"
+      "filename" : "Triangle 1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "RepoIcon@2x.png"
+      "filename" : "Triangle 1@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "RepoIcon@3x.png"
+      "filename" : "Triangle 1@3x.png"
     }
   ],
   "info" : {

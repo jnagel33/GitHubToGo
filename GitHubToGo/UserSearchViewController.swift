@@ -13,7 +13,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var collectionView: UICollectionView!
   
-  var users = [User]()
+  var users: [User]! = [User]()
   let gitHubService = GitHubService()
   var tapGestureRecognizer: UITapGestureRecognizer?
   var avatarImageViewSize = CGSize(width: 100, height: 100)
@@ -48,6 +48,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     
     cell.avatarImageView.image = nil
     cell.loginNameLabel.text = nil
+    cell.avatarImageView.layer.cornerRadius = 40
+    cell.avatarImageView.layer.masksToBounds = true
     
     let user = users[indexPath.row]
     cell.loginNameLabel.text = user.login
@@ -59,8 +61,6 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
           if self != nil {
             if tag == cell.tag {
               cell.avatarImageView.alpha = 0
-              cell.avatarImageView.layer.cornerRadius = 40
-              cell.avatarImageView.layer.masksToBounds = true
               cell.avatarImageView.transform = CGAffineTransformMakeScale(1.3, 1.3)
               user.avatarImage = image
 //              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
@@ -93,8 +93,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         if error != nil {
           // handle error
         } else {
-          self!.users = users!
-          self!.collectionView.reloadData()
+          self!.users = users
+          self!.collectionView.reloadSections(NSIndexSet(index: 0))
         }
       }
     })
@@ -105,10 +105,12 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     self.view.addGestureRecognizer(self.tapGestureRecognizer!)
   }
   
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    self.users = User()
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText.isEmpty {
+      self.users.removeAll(keepCapacity: false)
+      self.collectionView.reloadSections(NSIndexSet(index: 0))
+    }
   }
-  
   
   //MARK:
   //MARK: UINavigationControllerDelegate

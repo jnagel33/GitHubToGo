@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "RepoIcon.png"
+      "filename" : "MessageLogo.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "RepoIcon@2x.png"
+      "filename" : "MessageLogo@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "RepoIcon@3x.png"
+      "filename" : "MessageLogo@3x.png"
     }
   ],
   "info" : {
