@@ -11,6 +11,7 @@ import UIKit
 class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTransitioning {
 
   let duration = 0.5
+  let imageViewCornerRadius: CGFloat = 100
   
   func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
     return duration
@@ -40,7 +41,7 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
       snapShot.frame = frame
     }) { (finished) -> Void in
       if finished {
-        toVC.profileImageView.layer.cornerRadius = 100
+        toVC.profileImageView.layer.cornerRadius = self.imageViewCornerRadius
         toVC.profileImageView.layer.masksToBounds = true
         toVC.profileImageView.hidden = false
         snapShot.removeFromSuperview()

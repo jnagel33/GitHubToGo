@@ -17,11 +17,14 @@ class SingleUserViewController: UIViewController {
   @IBOutlet weak var profileImageView: UIImageView!
   let gitHubService = GitHubService()
   let avatarImageViewSize = CGSize(width: 200, height: 200)
+  let imageViewCornerRadius: CGFloat = 100
   var selectedUser: User?
   var isAuthenticatedUser: Bool!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.profileImageView.layer.cornerRadius = self.imageViewCornerRadius
+    self.profileImageView.layer.masksToBounds = true
     
     if self.isAuthenticatedUser! {
       self.gitHubService.getAuthenticatedUser({ [weak self] (user, error) -> Void in
@@ -29,27 +32,35 @@ class SingleUserViewController: UIViewController {
           if error != nil {
             //handle error
           } else {
+            self?.profileImageView.alpha = 0
             self!.loginLabel.text = user!.login
             ImageService.sharedService.fetchProfileImage(user!.avatarUrl, completionHandler: { [weak self] (image) -> () in
               if self != nil {
-                  user!.avatarImage = image!
-                  let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
-                  self?.profileImageView.image = resizedImage
-                }
-              })
-
-            self!.selectedUser = user
-            self!.nameLabel.text = user!.name
-            self!.locationLabel.text = user!.location
-            self!.emailLabel.text = user!.email
+                user!.avatarImage = image!
+//                let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
+                self!.profileImageView.image = image
+                self!.selectedUser = user
+                self!.nameLabel.text = user!.name
+                self!.locationLabel.text = user!.location
+                self!.emailLabel.text = user!.email
+                
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                  self!.profileImageView.alpha = 1
+                  self!.nameLabel.alpha = 1
+                  self!.loginLabel.alpha = 1
+                  self!.emailLabel.alpha = 1
+                  self!.locationLabel.alpha = 1
+                })
+              }
+            })
           }
         }
       })
     } else {
       self.loginLabel.text = selectedUser!.login
       if let image = self.selectedUser!.avatarImage {
-        let resizedImage = ImageResizer.resizeImage(image, size: avatarImageViewSize)
-        self.profileImageView.image = resizedImage
+//        let resizedImage = ImageResizer.resizeImage(image, size: avatarImageViewSize)
+        self.profileImageView.image = image
       }
       self.gitHubService.getUser(self.selectedUser!.login, completionHandler: { [weak self] (user, error) -> Void in
         if self != nil {
@@ -59,9 +70,18 @@ class SingleUserViewController: UIViewController {
             self!.nameLabel.text = user!.name
             self!.locationLabel.text = user!.location
             self!.emailLabel.text = user!.email
+            
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+              self!.nameLabel.alpha = 1
+              self!.emailLabel.alpha = 1
+              self!.locationLabel.alpha = 1
+            })
           }
         }
       })
     }
   }
+  
+  
+  
 }

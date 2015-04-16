@@ -63,8 +63,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
               cell.avatarImageView.layer.masksToBounds = true
               cell.avatarImageView.transform = CGAffineTransformMakeScale(1.3, 1.3)
               user.avatarImage = image
-              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
-              cell.avatarImageView.image = resizedImage
+//              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
+              cell.avatarImageView.image = image
               UIView.animateWithDuration(0.2, animations: { () -> Void in
                 cell.avatarImageView.alpha = 1
                 cell.avatarImageView.transform  = CGAffineTransformMakeScale(1.0, 1.0)
@@ -103,6 +103,10 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
     tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
     self.view.addGestureRecognizer(self.tapGestureRecognizer!)
+  }
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    self.users = User()
   }
   
   
