@@ -112,6 +112,16 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     })
   }
   
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    if text.validForURL() {
+      searchBar.tintColor = UIColor.blackColor()
+      return true
+    } else {
+      searchBar.tintColor = UIColor.redColor()
+      return false
+    }
+  }
+  
   func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
     tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
     self.view.addGestureRecognizer(self.tapGestureRecognizer!)

@@ -69,6 +69,16 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
     })
   }
   
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    if text.validForURL() {
+      searchBar.tintColor = UIColor.blackColor()
+      return true
+    } else {
+      searchBar.tintColor = UIColor.redColor()
+      return false
+    }
+  }
+  
   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
     if searchText.isEmpty {
       self.repositories.removeAll(keepCapacity: false)

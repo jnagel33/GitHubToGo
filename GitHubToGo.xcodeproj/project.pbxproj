@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		430416F01ADF40FE006417DC /* ToSingleUserAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */; };
 		430416F21ADF5ED9006417DC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430416F11ADF5ED9006417DC /* LaunchScreen.xib */; };
+		430416F41AE0BF7C006417DC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416F31AE0BF7C006417DC /* StringExtension.swift */; };
 		4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1041ADC8C4C00070604 /* AppDelegate.swift */; };
 		4387C10A1ADC8C4C00070604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4387C1081ADC8C4C00070604 /* Main.storyboard */; };
 		4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10B1ADC8C4C00070604 /* Images.xcassets */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToSingleUserAnimationViewController.swift; sourceTree = "<group>"; };
 		430416F11ADF5ED9006417DC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		430416F31AE0BF7C006417DC /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4387C0FF1ADC8C4C00070604 /* GitHubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387C1031ADC8C4C00070604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387C1041ADC8C4C00070604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				4387C1081ADC8C4C00070604 /* Main.storyboard */,
+				430416F31AE0BF7C006417DC /* StringExtension.swift */,
 				4387C12E1ADC9E1100070604 /* RepoSearchTableViewCell.swift */,
 				4387C1621ADD798C00070604 /* UserSearchCollectionViewCell.swift */,
 			);
@@ -300,6 +303,7 @@
 				4387C1271ADC8FB200070604 /* RepoSearchViewController.swift in Sources */,
 				4387C1611ADD71C300070604 /* UserSearchViewController.swift in Sources */,
 				4387C1291ADC906B00070604 /* Repository.swift in Sources */,
+				430416F41AE0BF7C006417DC /* StringExtension.swift in Sources */,
 				4387C1651ADD7C7B00070604 /* User.swift in Sources */,
 				4387C1671ADD804700070604 /* UserJSONParser.swift in Sources */,
 				4387C1741ADDBA4800070604 /* LoginViewController.swift in Sources */,
