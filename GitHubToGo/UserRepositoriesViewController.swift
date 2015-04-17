@@ -14,6 +14,7 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
   
   var repositories = [Repository]()
   let gitHubService = GitHubService()
+  var minutesInAnHour: Int = 60
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -68,7 +69,7 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
     if hourDif == 0 {
       displayText = "\(abs(minuteDif!)) minutes ago"
     } else if dayDif == 0 {
-    let minuteRemainder = hourDif! % 60
+    let minuteRemainder = hourDif! % self.minutesInAnHour
       displayText = "\(abs(hourDif!)) hours, \(abs(minuteRemainder)) minutes ago"
     } else {
       displayText = "\(abs(dayDif!)) days"

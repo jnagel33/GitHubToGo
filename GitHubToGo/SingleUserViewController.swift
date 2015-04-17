@@ -10,6 +10,7 @@ import UIKit
 
 class SingleUserViewController: UIViewController {
   
+  @IBOutlet weak var bioIcon: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var loginLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
@@ -18,6 +19,9 @@ class SingleUserViewController: UIViewController {
   @IBOutlet weak var locationIcon: UIImageView!
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var backgroundProfileView: UIView!
+  @IBOutlet weak var bioLabel: UILabel!
+  @IBOutlet weak var hireableLabel: UILabel!
+  @IBOutlet weak var hireableStaticLabel: UILabel!
   
   let gitHubService = GitHubService()
   let avatarImageViewSize = CGSize(width: 200, height: 200)
@@ -41,6 +45,18 @@ class SingleUserViewController: UIViewController {
       self.locationLabel.text = user.location
       self.emailLabel.text = user.email
       self.profileImageView.image = user.avatarImage
+      if user.bio != nil {
+        self.bioLabel.text = user.bio
+      } else {
+        self.bioLabel.text = "No Bio"
+      }
+      if user.hireable != nil {
+        if user.hireable! {
+          self.hireableLabel.text = "Yes"
+        } else {
+          self.hireableLabel.text = "No"
+        }
+      }
     }
     
     self.getUserInfo()
@@ -81,12 +97,28 @@ class SingleUserViewController: UIViewController {
       self.emailIcon.center.y -= self.view.bounds.height
       }, completion: nil)
     
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateHalfSecond, usingSpringWithDamping: self.slightSpringEffect, initialSpringVelocity: self.slowerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+      self.bioIcon.center.y -= self.view.bounds.height
+      }, completion: nil)
+    
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateHalfSecond, usingSpringWithDamping: self.slightSpringEffect, initialSpringVelocity: self.slowerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+      self.hireableStaticLabel.center.y -= self.view.bounds.height
+      }, completion: nil)
+    
     UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.normalSpringDamping, initialSpringVelocity: self.quickerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.locationLabel.center.x -= self.view.bounds.width
       }, completion: nil)
     
     UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.normalSpringDamping, initialSpringVelocity: self.quickerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.emailLabel.center.x -= self.view.bounds.width
+      }, completion: nil)
+    
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.normalSpringDamping, initialSpringVelocity: self.quickerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+      self.bioLabel.center.x -= self.view.bounds.width
+      }, completion: nil)
+    
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.normalSpringDamping, initialSpringVelocity: self.quickerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+      self.hireableLabel.center.x -= self.view.bounds.width
       }, completion: nil)
   }
   
@@ -102,6 +134,18 @@ class SingleUserViewController: UIViewController {
           self!.loginLabel.text = user!.login
           self!.locationLabel.text = user!.location
           self!.emailLabel.text = user!.email
+          if user!.bio != nil {
+            self!.bioLabel.text = user!.bio
+          } else {
+            self!.bioLabel.text = "No Bio"
+          }
+          if user!.hireable != nil {
+            if user!.hireable! {
+              self!.hireableLabel.text = "Yes"
+            } else {
+              self!.hireableLabel.text = "No"
+            }
+          }
           if self!.profileImageView.image == nil {
             self!.profileImageView.alpha = 0
             ImageService.sharedService.fetchProfileImage(user!.avatarUrl, completionHandler: { [weak self] (image) -> () in
