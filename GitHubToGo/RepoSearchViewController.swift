@@ -11,16 +11,14 @@ import UIKit
 class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
 
   @IBOutlet weak var searchBar: UISearchBar!
-  var tapGestureRecognizer: UITapGestureRecognizer?
   
+  var tapGestureRecognizer: UITapGestureRecognizer?
   var repositories = [Repository]()
   let gitHubService = GitHubService()
-  var selectedRepository: Repository?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Repository Search"
-    self.tableView.delegate = self
     self.tableView.dataSource = self
     self.searchBar.delegate = self
   }
@@ -44,15 +42,6 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
   }
   
   //MARK:
-  //MARK: UITableViewDelegate
-  
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    self.selectedRepository = self.repositories[indexPath.row]
-    self.performSegueWithIdentifier("ShowRepoDetails", sender: self)
-  }
-  
-  
   //MARK: UISearchBarDelagate
   
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -96,9 +85,10 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
   //MARK: prepareForSegue
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "ShowRepoDetails" {
-      let navigationController = segue.destinationViewController as? RepoDetailsViewController
-      navigationController!.selectedRepository = self.selectedRepository
+    if segue.identifier == "ShowRepoWebView" {
+      let destinationController = segue.destinationViewController as? RepositoryWebViewController
+      let indexPath = self.tableView.indexPathsForSelectedRows()!.first as! NSIndexPath
+      destinationController!.selectedRepo = self.repositories[indexPath.row]
     }
   }
 }

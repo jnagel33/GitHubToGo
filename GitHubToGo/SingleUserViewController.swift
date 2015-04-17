@@ -23,10 +23,25 @@ class SingleUserViewController: UIViewController {
   let avatarImageViewSize = CGSize(width: 200, height: 200)
   let imageViewCornerRadius: CGFloat = 100
   var selectedUser: User?
-  var isAuthenticatedUser: Bool!
+  
+  let animateHalfSecond: Double = 0.5
+  let animateOneThirdSecond: Double = 0.3
+  let slightSpringEffect: CGFloat = 0.8
+  let normalSpringDamping: CGFloat = 1
+  let quickerVelocity: CGFloat = 1
+  let slowerVelocity: CGFloat = 0.8
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    if let user = selectedUser {
+      self.selectedUser = user
+      self.nameLabel.text = user.name
+      self.loginLabel.text = user.login
+      self.locationLabel.text = user.location
+      self.emailLabel.text = user.email
+      self.profileImageView.image = user.avatarImage
+    }
     
     self.getUserInfo()
     self.doAnimations()
@@ -43,64 +58,61 @@ class SingleUserViewController: UIViewController {
     self.locationIcon.center.y += view.bounds.height
     self.backgroundProfileView.center.y -= view.bounds.height
     
-    UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    UIView.animateWithDuration(self.animateOneThirdSecond, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.backgroundProfileView.center.y += self.view.bounds.height
     }) { (finished) -> Void in
       self.profileImageView.alpha = 1
     }
     
-    UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    UIView.animateWithDuration(self.animateHalfSecond, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.nameLabel.center.x += self.view.bounds.width
       }, completion: nil)
     
-    UIView.animateWithDuration(0.5, delay: 0.3, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.loginLabel.center.x += self.view.bounds.width
       }) { (finished) -> Void in
-        
     }
-    UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-      self.emailIcon.center.y -= self.view.bounds.height
-      }, completion: nil)
     
-    UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.slightSpringEffect, initialSpringVelocity: self.slightSpringEffect, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.locationIcon.center.y -= self.view.bounds.height
       }, completion: nil)
     
-    UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateHalfSecond, usingSpringWithDamping: self.slightSpringEffect, initialSpringVelocity: self.slowerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+      self.emailIcon.center.y -= self.view.bounds.height
+      }, completion: nil)
+    
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.normalSpringDamping, initialSpringVelocity: self.quickerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.locationLabel.center.x -= self.view.bounds.width
       }, completion: nil)
     
-    UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    UIView.animateWithDuration(self.animateHalfSecond, delay: self.animateOneThirdSecond, usingSpringWithDamping: self.normalSpringDamping, initialSpringVelocity: self.quickerVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.emailLabel.center.x -= self.view.bounds.width
       }, completion: nil)
   }
   
   
   func getUserInfo() {
-    self.loginLabel.text = selectedUser?.login
-    if let image = self.selectedUser?.avatarImage {
-      let resizedImage = ImageResizer.resizeImage(image, size: avatarImageViewSize)
-      self.profileImageView.image = resizedImage
-    } else {
-      self.profileImageView.alpha = 0
-    }
     self.gitHubService.getUser(self.selectedUser?.login, completionHandler: { [weak self] (user, error) -> Void in
       if self != nil {
         if error != nil {
           //handle error
         } else {
+          self!.selectedUser = user!
+          self!.nameLabel.text = user!.name
           self!.loginLabel.text = user!.login
-          ImageService.sharedService.fetchProfileImage(user!.avatarUrl, completionHandler: { [weak self] (image) -> () in
-            if self != nil {
+          self!.locationLabel.text = user!.location
+          self!.emailLabel.text = user!.email
+          if self!.profileImageView.image == nil {
+            self!.profileImageView.alpha = 0
+            ImageService.sharedService.fetchProfileImage(user!.avatarUrl, completionHandler: { [weak self] (image) -> () in
               user!.avatarImage = image!
               let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
               self!.profileImageView.image = resizedImage
-              self!.selectedUser = user
-              self!.nameLabel.text = user!.name
-              self!.locationLabel.text = user!.location
-              self!.emailLabel.text = user!.email
-            }
-          })
+              UIView.animateWithDuration(self!.animateOneThirdSecond, animations: { () -> Void in
+                self!.profileImageView.alpha = 1
+              })
+            })
+          }
         }
       }
     })

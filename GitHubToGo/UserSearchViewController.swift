@@ -152,7 +152,6 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
       let destinationController = segue.destinationViewController as! SingleUserViewController
       let selectedIndexPath = self.collectionView.indexPathsForSelectedItems().first as! NSIndexPath
       destinationController.selectedUser = self.users[selectedIndexPath.row]
-      destinationController.isAuthenticatedUser = false
     }
   }
 }

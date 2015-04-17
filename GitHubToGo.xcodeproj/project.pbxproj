@@ -10,6 +10,8 @@
 		430416F01ADF40FE006417DC /* ToSingleUserAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */; };
 		430416F21ADF5ED9006417DC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430416F11ADF5ED9006417DC /* LaunchScreen.xib */; };
 		430416F41AE0BF7C006417DC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416F31AE0BF7C006417DC /* StringExtension.swift */; };
+		430416F61AE0C97A006417DC /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416F51AE0C97A006417DC /* RepositoryWebViewController.swift */; };
+		430416F81AE0D3B1006417DC /* UserRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430416F71AE0D3B1006417DC /* UserRepositoriesViewController.swift */; };
 		4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1041ADC8C4C00070604 /* AppDelegate.swift */; };
 		4387C10A1ADC8C4C00070604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4387C1081ADC8C4C00070604 /* Main.storyboard */; };
 		4387C10C1ADC8C4C00070604 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387C10B1ADC8C4C00070604 /* Images.xcassets */; };
@@ -26,11 +28,12 @@
 		4387C1671ADD804700070604 /* UserJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1661ADD804700070604 /* UserJSONParser.swift */; };
 		4387C1691ADD89BF00070604 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1681ADD89BF00070604 /* ImageService.swift */; };
 		4387C16B1ADD8B6C00070604 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C16A1ADD8B6C00070604 /* ImageResizer.swift */; };
-		4387C1701ADDA5C500070604 /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C16F1ADDA5C500070604 /* RepoDetailsViewController.swift */; };
 		4387C1721ADDB3CB00070604 /* GitHubKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1711ADDB3CB00070604 /* GitHubKeys.swift */; };
 		4387C1741ADDBA4800070604 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1731ADDBA4800070604 /* LoginViewController.swift */; };
 		4387C1761ADDBB1600070604 /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1751ADDBB1600070604 /* OAuthService.swift */; };
 		4387C1781ADE2F8700070604 /* SingleUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387C1771ADE2F8700070604 /* SingleUserViewController.swift */; };
+		43EBC4D71AE1796600BDDFA8 /* UserRepoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EBC4D61AE1796600BDDFA8 /* UserRepoWebViewController.swift */; };
+		43EBC4D91AE17E4400BDDFA8 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EBC4D81AE17E4400BDDFA8 /* NSDateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,8 @@
 		430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToSingleUserAnimationViewController.swift; sourceTree = "<group>"; };
 		430416F11ADF5ED9006417DC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		430416F31AE0BF7C006417DC /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		430416F51AE0C97A006417DC /* RepositoryWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryWebViewController.swift; sourceTree = "<group>"; };
+		430416F71AE0D3B1006417DC /* UserRepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepositoriesViewController.swift; sourceTree = "<group>"; };
 		4387C0FF1ADC8C4C00070604 /* GitHubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387C1031ADC8C4C00070604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387C1041ADC8C4C00070604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,11 +72,12 @@
 		4387C1661ADD804700070604 /* UserJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJSONParser.swift; sourceTree = "<group>"; };
 		4387C1681ADD89BF00070604 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		4387C16A1ADD8B6C00070604 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
-		4387C16F1ADDA5C500070604 /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		4387C1711ADDB3CB00070604 /* GitHubKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubKeys.swift; sourceTree = "<group>"; };
 		4387C1731ADDBA4800070604 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4387C1751ADDBB1600070604 /* OAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
 		4387C1771ADE2F8700070604 /* SingleUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleUserViewController.swift; sourceTree = "<group>"; };
+		43EBC4D61AE1796600BDDFA8 /* UserRepoWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepoWebViewController.swift; sourceTree = "<group>"; };
+		43EBC4D81AE17E4400BDDFA8 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				4387C1081ADC8C4C00070604 /* Main.storyboard */,
-				430416F31AE0BF7C006417DC /* StringExtension.swift */,
 				4387C12E1ADC9E1100070604 /* RepoSearchTableViewCell.swift */,
 				4387C1621ADD798C00070604 /* UserSearchCollectionViewCell.swift */,
 			);
@@ -165,10 +170,13 @@
 			children = (
 				4387C1731ADDBA4800070604 /* LoginViewController.swift */,
 				4387C1601ADD71C300070604 /* UserSearchViewController.swift */,
+				430416F71AE0D3B1006417DC /* UserRepositoriesViewController.swift */,
+				43EBC4D81AE17E4400BDDFA8 /* NSDateExtension.swift */,
+				43EBC4D61AE1796600BDDFA8 /* UserRepoWebViewController.swift */,
 				430416EF1ADF40FE006417DC /* ToSingleUserAnimationViewController.swift */,
 				4387C1261ADC8FB200070604 /* RepoSearchViewController.swift */,
-				4387C16F1ADDA5C500070604 /* RepoDetailsViewController.swift */,
 				4387C1771ADE2F8700070604 /* SingleUserViewController.swift */,
+				430416F51AE0C97A006417DC /* RepositoryWebViewController.swift */,
 				4387C1241ADC8DF500070604 /* MainMenuViewController.swift */,
 			);
 			name = Controller;
@@ -177,6 +185,7 @@
 		4387C16E1ADD9E7300070604 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				430416F31AE0BF7C006417DC /* StringExtension.swift */,
 				4387C1751ADDBB1600070604 /* OAuthService.swift */,
 				4387C1711ADDB3CB00070604 /* GitHubKeys.swift */,
 				4387C16A1ADD8B6C00070604 /* ImageResizer.swift */,
@@ -293,9 +302,13 @@
 			files = (
 				430416F01ADF40FE006417DC /* ToSingleUserAnimationViewController.swift in Sources */,
 				4387C1721ADDB3CB00070604 /* GitHubKeys.swift in Sources */,
+				43EBC4D71AE1796600BDDFA8 /* UserRepoWebViewController.swift in Sources */,
 				4387C12D1ADC95C300070604 /* RepoJSONParser.swift in Sources */,
+				43EBC4D91AE17E4400BDDFA8 /* NSDateExtension.swift in Sources */,
 				4387C1631ADD798C00070604 /* UserSearchCollectionViewCell.swift in Sources */,
+				430416F61AE0C97A006417DC /* RepositoryWebViewController.swift in Sources */,
 				4387C12B1ADC914400070604 /* GitHubService.swift in Sources */,
+				430416F81AE0D3B1006417DC /* UserRepositoriesViewController.swift in Sources */,
 				4387C1051ADC8C4C00070604 /* AppDelegate.swift in Sources */,
 				4387C1781ADE2F8700070604 /* SingleUserViewController.swift in Sources */,
 				4387C1251ADC8DF500070604 /* MainMenuViewController.swift in Sources */,
@@ -309,7 +322,6 @@
 				4387C1741ADDBA4800070604 /* LoginViewController.swift in Sources */,
 				4387C16B1ADD8B6C00070604 /* ImageResizer.swift in Sources */,
 				4387C12F1ADC9E1100070604 /* RepoSearchTableViewCell.swift in Sources */,
-				4387C1701ADDA5C500070604 /* RepoDetailsViewController.swift in Sources */,
 				4387C1761ADDBB1600070604 /* OAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

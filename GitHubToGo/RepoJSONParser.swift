@@ -22,12 +22,36 @@ class RepoJSONParser {
       description = item["description"] as? String,
             score = item["score"] as? Double,
             owner = item["owner"] as? [String: AnyObject],
-          ownerId = owner["id"] as? Int,
+//          ownerId = owner["id"] as? Int,
             login = owner["login"] as? String,
-        avatarUrl = owner["avatar_url"] as? String {
+        avatarUrl = owner["avatar_url"] as? String,
+        updatedAt = item["updated_at"] as? String {
           
-          let repository = Repository(id: id, name: name, login: login, htmlURL: url, description: description, score: score, ownerId: ownerId, avatarUrl: avatarUrl)
+          let repository = Repository(id: id, name: name, login: login, htmlURL: url, description: description, score: score, avatarUrl: avatarUrl, updatedAt: updatedAt)
           repositories.append(repository)
+        }
+      }
+    }
+    return repositories
+  }
+  
+  class func getUserRepositories(data: NSData) -> [Repository]? {
+    var repositories = [Repository]()
+    var error: NSError?
+    
+    if let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [[String: AnyObject]] {
+      for item in  jsonObject {
+        if let owner = item["owner"] as? [String: AnyObject],
+          id = owner["id"] as? Int,
+          avatarUrl = owner["avatar_url"] as? String,
+          login = owner["login"] as? String,
+          name = item["name"] as? String,
+          url = item["html_url"] as? String,
+          description = item["description"] as? String,
+        updatedAt = item["updated_at"] as? String {
+            
+          let repository = Repository(id: id, name: name, login: login, htmlURL: url, description: description, score: nil, avatarUrl: avatarUrl, updatedAt: updatedAt)
+            repositories.append(repository)
         }
       }
     }

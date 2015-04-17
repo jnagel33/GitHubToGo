@@ -14,7 +14,9 @@ class GitHubService {
   private let searchUsersURL = "https://api.github.com/search/users"
   private let userURL = "https://api.github.com/users"
   private let authenticatedUserURL = "https://api.github.com/user"
+  private let authenticatedUserReposURL = "https://api.github.com/user/repos"
   
+  //TODO status code check
   func getRepositorySearchResults(searchText: String, completionHandler: ([Repository]?, String?) -> Void) {
     if let encodedSearchText = searchText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
       let accessToken = NSUserDefaults.standardUserDefaults().valueForKey("accessToken") as? String
@@ -81,6 +83,28 @@ class GitHubService {
             let user = UserJSONParser.getUserFromJSONData(data!)
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
               completionHandler(user, nil)
+            })
+          }
+        }
+      }
+    })
+    dataTask.resume()
+  }
+  
+  func getRepository(completionHandler: ([Repository]?, String?) -> Void) {
+    let accessToken = NSUserDefaults.standardUserDefaults().valueForKey("accessToken") as? String
+    var urlStr = "\(self.authenticatedUserReposURL)?access_token=\(accessToken!)"
+    let url = NSURL(string: urlStr)
+    let requestUrl = NSURLRequest(URL: url!)
+    let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
+      if error != nil {
+        // handle error
+      } else {
+        if let httpResponse = response as? NSHTTPURLResponse {
+          if httpResponse.statusCode == 200 {
+            let repos = RepoJSONParser.getUserRepositories(data!)
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+              completionHandler(repos, nil)
             })
           }
         }

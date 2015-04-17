@@ -17,7 +17,6 @@ class MainMenuViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "ShowAuthenticatedUser" {
       let destinationController = segue.destinationViewController as! SingleUserViewController
-      destinationController.isAuthenticatedUser = true
     }
   }
 }

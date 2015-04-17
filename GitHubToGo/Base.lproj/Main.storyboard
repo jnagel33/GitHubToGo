@@ -67,6 +67,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Uzz-09-psI" kind="show" id="VvR-zB-0HD"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="tgx-qH-K7g">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -100,7 +103,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIs-tk-evm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1205" y="445"/>
+            <point key="canvasLocation" x="1127" y="7"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="QzA-mY-E4y">
@@ -220,6 +223,7 @@
                                     <outlet property="avatarImageView" destination="xMu-Q7-Znb" id="hmD-NR-GVQ"/>
                                     <outlet property="nameLabel" destination="Pbd-vu-YZc" id="aQG-7s-aLC"/>
                                     <outlet property="userLabel" destination="wtO-EV-2ZH" id="I9K-1P-7SZ"/>
+                                    <segue destination="hds-ZE-smr" kind="show" identifier="ShowRepoWebView" id="W58-mj-CVl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -234,7 +238,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZJ-on-3eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942" y="-404"/>
+            <point key="canvasLocation" x="1870" y="-1156"/>
+        </scene>
+        <!--Repository Web View Controller-->
+        <scene sceneID="yMv-be-13m">
+            <objects>
+                <viewController id="hds-ZE-smr" customClass="RepositoryWebViewController" customModule="GitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fA8-qi-Obp"/>
+                        <viewControllerLayoutGuide type="bottom" id="IHp-sA-jId"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gnj-4O-cLe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FkZ-FB-gLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2810" y="-589"/>
         </scene>
         <!--Single User View Controller-->
         <scene sceneID="p71-G9-MSo">
@@ -267,14 +289,14 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVv-LH-yY4">
                                                 <rect key="frame" x="23" y="288" width="569" height="26"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMO-qq-aTT">
                                                 <rect key="frame" x="29" y="322" width="563" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgw-KE-qUw">
@@ -392,7 +414,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfp-CG-Bhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2009" y="989"/>
+            <point key="canvasLocation" x="1870" y="295"/>
+        </scene>
+        <!--User Repositories View Controller-->
+        <scene sceneID="lGB-Kq-GW5">
+            <objects>
+                <viewController id="Uzz-09-psI" customClass="UserRepositoriesViewController" customModule="GitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0m0-T9-7wY"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Bl-yW-jyT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="erJ-jV-cx2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQH-iP-8Kb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserRepoCell" textLabel="Gb6-oE-6nc" detailTextLabel="7YQ-SQ-nMf" style="IBUITableViewCellStyleValue1" id="Vea-Y2-kd0">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vea-Y2-kd0" id="tL9-vS-4r5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gb6-oE-6nc">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7YQ-SQ-nMf">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ZwF-wU-YBJ" kind="show" identifier="ShowUserRepoWebView" id="bol-gJ-xUf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="GQH-iP-8Kb" secondAttribute="trailing" constant="-16" id="6E2-5K-3xQ"/>
+                            <constraint firstItem="GQH-iP-8Kb" firstAttribute="leading" secondItem="erJ-jV-cx2" secondAttribute="leadingMargin" constant="-16" id="B6D-Je-rdS"/>
+                            <constraint firstItem="GQH-iP-8Kb" firstAttribute="top" secondItem="erJ-jV-cx2" secondAttribute="topMargin" id="mee-7J-foy"/>
+                            <constraint firstItem="2Bl-yW-jyT" firstAttribute="top" secondItem="GQH-iP-8Kb" secondAttribute="bottom" id="y2V-PG-Wqm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="GQH-iP-8Kb" id="3Me-iS-FC5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n5l-lU-tJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1127" y="774"/>
+        </scene>
+        <!--User Repo Web View Controller-->
+        <scene sceneID="yhh-or-EhG">
+            <objects>
+                <viewController id="ZwF-wU-YBJ" customClass="UserRepoWebViewController" customModule="GitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ogy-AH-TEb"/>
+                        <viewControllerLayoutGuide type="bottom" id="x2b-x1-6Ob"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dau-qA-pK2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2E3-ds-Fwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1870" y="1035"/>
         </scene>
         <!--User Search View Controller-->
         <scene sceneID="R4B-B7-CwK">
@@ -480,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Shg-RT-YfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2213" y="268"/>
+            <point key="canvasLocation" x="1870" y="-444"/>
         </scene>
     </scenes>
     <resources>

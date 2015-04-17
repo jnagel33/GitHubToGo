@@ -51,7 +51,7 @@ class UserJSONParser {
         var location: String?
         var name: String?
         var hireable: Bool?
-      var followers: Int?
+        var followers: Int?
       
         if let userName = userInfo["name"] as? String {
           name = userName

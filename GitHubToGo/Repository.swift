@@ -14,21 +14,21 @@ class Repository {
   let name: String
   let htmlURL: String
   let description: String
-  let score: Double
-  let ownerId: Int
+  let score: Double?
   let login: String
   let avatarUrl: String
   var avatarImage: UIImage?
+  var updatedAt: String?
   
   
-  init(id: Int, name : String, login : String, htmlURL : String, description : String, score: Double, ownerId: Int, avatarUrl: String) {
+  init(id: Int, name : String, login : String, htmlURL : String, description : String, score: Double?, avatarUrl: String, updatedAt: String?) {
     self.id = id
     self.name = name
     self.login = login
     self.htmlURL = htmlURL
     self.description = description
     self.score = score
-    self.ownerId = ownerId
     self.avatarUrl = avatarUrl
+    self.updatedAt = updatedAt
   }
 }
