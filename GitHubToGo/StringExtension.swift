@@ -20,8 +20,6 @@ extension String {
     if matches > 0 {
       return false
     }
-    
     return true
-    
   }
 }
