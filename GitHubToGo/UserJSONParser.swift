@@ -19,7 +19,6 @@ class UserJSONParser {
       for user in searchUsers {
         let user = self.getUserInfoFromJSONData(user)
         users.append(user!)
-//        }
       }
     }
     return users
@@ -38,7 +37,7 @@ class UserJSONParser {
     return nil
   }
   
-  class func getUserInfoFromJSONData(userInfo: [String: AnyObject]) -> User? {
+  private class func getUserInfoFromJSONData(userInfo: [String: AnyObject]) -> User? {
     var error: NSError?
     var returnUser: User?
     if let id = userInfo["id"] as? Int,

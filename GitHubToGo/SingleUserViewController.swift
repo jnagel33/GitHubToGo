@@ -41,7 +41,7 @@ class SingleUserViewController: UIViewController, UINavigationControllerDelegate
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    var backBarButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "unwind")
+    var backBarButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "backButtonPressed")
     self.navigationItem.hidesBackButton = true;
     self.navigationItem.leftBarButtonItem = backBarButton;
     
@@ -71,19 +71,13 @@ class SingleUserViewController: UIViewController, UINavigationControllerDelegate
     self.doAnimations()
   }
   
-  func unwind() {
+  func backButtonPressed() {
     if self.navigationController!.viewControllers.count < controllerCountIndexMax {
       self.navigationController?.popToRootViewControllerAnimated(true)
     }
     self.performSegueWithIdentifier("Unwind", sender: self)
   }
   
-  func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    if toVC is UserSearchViewController {
-      return UnwindSegueBackToSearch()
-    }
-    return nil
-  }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -109,7 +103,9 @@ class SingleUserViewController: UIViewController, UINavigationControllerDelegate
     UIView.animateWithDuration(self.animateOneThirdSecond, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
       self.backgroundProfileView.center.y += self.view.bounds.height
     }) { (finished) -> Void in
-      self.profileImageView.alpha = 1
+      if finished {
+        self.profileImageView.alpha = 1
+      }
     }
     
     UIView.animateWithDuration(self.animateHalfSecond, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
@@ -159,7 +155,10 @@ class SingleUserViewController: UIViewController, UINavigationControllerDelegate
     self.gitHubService.getUser(self.selectedUser?.login, completionHandler: { [weak self] (user, error) -> Void in
       if self != nil {
         if error != nil {
-          //handle error
+          let alert = UIAlertController(title: "An error occured", message: error, preferredStyle: .Alert)
+          let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+          alert.addAction(okAction)
+          self!.presentViewController(alert, animated: true, completion: nil)
         } else {
           self!.selectedUser = user!
           self!.nameLabel.text = user!.name
@@ -181,16 +180,28 @@ class SingleUserViewController: UIViewController, UINavigationControllerDelegate
           if self!.profileImageView.image == nil {
             self!.profileImageView.alpha = 0
             ImageService.sharedService.fetchProfileImage(user!.avatarUrl, completionHandler: { [weak self] (image) -> () in
-              user!.avatarImage = image!
-              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
-              self!.profileImageView.image = resizedImage
-              UIView.animateWithDuration(self!.animateOneThirdSecond, animations: { () -> Void in
-                self!.profileImageView.alpha = 1
-              })
+              if image != nil {
+                user!.avatarImage = image!
+                let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
+                self!.profileImageView.image = resizedImage
+                UIView.animateWithDuration(self!.animateOneThirdSecond, animations: { [weak self] () -> Void in
+                  self!.profileImageView.alpha = 1
+                })
+              }
             })
           }
         }
       }
     })
+  }
+  
+  //MARK:
+  //MARK: UINavigationControllerDelegate
+  
+  func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    if toVC is UserSearchViewController {
+      return UnwindSegueBackToSearch()
+    }
+    return nil
   }
 }

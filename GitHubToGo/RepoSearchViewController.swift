@@ -49,7 +49,10 @@ class RepoSearchViewController: UITableViewController, UISearchBarDelegate {
     gitHubService.getRepositorySearchResults(searchBar.text, completionHandler: { [weak self] (repositories, error) -> Void in
       if self != nil {
         if error != nil {
-          print(error)
+          let alert = UIAlertController(title: "An error occured", message: error, preferredStyle: .Alert)
+          let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+          alert.addAction(okAction)
+          self!.presentViewController(alert, animated: true, completion: nil)
         } else {
           self!.repositories = repositories!
           self!.tableView.reloadData()

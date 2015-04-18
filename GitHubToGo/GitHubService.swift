@@ -25,18 +25,23 @@ class GitHubService {
       let requestURL = NSURLRequest(URL: url!)
       
       let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestURL, completionHandler: { (data, response, error) -> Void in
+        var errorDescription: String? = nil
+        var repositories: [Repository]? = nil
         if error != nil {
-          // handle error
+          errorDescription = error.description
         } else {
           if let httpResponse = response as? NSHTTPURLResponse {
-            if httpResponse.statusCode == 200 {
-              let repositories = RepoJSONParser.getRepositoriesFromJSONData(data)
-              NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                completionHandler(repositories, nil)
-              })
+            let status = self.checkStatusCode(httpResponse.statusCode)
+            if status.readyToParse {
+              repositories = RepoJSONParser.getRepositoriesFromJSONData(data)
+            } else {
+              errorDescription = status.errorDescription
             }
           }
         }
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+          completionHandler(repositories, errorDescription)
+        })
       })
       dataTask.resume()
     }
@@ -49,18 +54,23 @@ class GitHubService {
       let url = NSURL(string: urlStr)
       let requestUrl = NSURLRequest(URL: url!)
       let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
+        var errorDescription: String? = nil
+        var users: [User]? = nil
         if error != nil {
-          // handle error
+          errorDescription = error.description
         } else {
           if let httpResponse = response as? NSHTTPURLResponse {
-            if httpResponse.statusCode == 200 {
-              let users = UserJSONParser.getUsersFromJSONData(data!)
-              NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                completionHandler(users, nil)
-              })
+            let status = self.checkStatusCode(httpResponse.statusCode)
+            if status.readyToParse {
+              users = UserJSONParser.getUsersFromJSONData(data!)
+            } else {
+              errorDescription = status.errorDescription
             }
           }
         }
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+          completionHandler(users, errorDescription)
+        })
       })
       dataTask.resume()
     }
@@ -75,18 +85,23 @@ class GitHubService {
     let url = NSURL(string: urlStr)
     let requestUrl = NSURLRequest(URL: url!)
     let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
+      var errorDescription: String? = nil
+      var user: User? = nil
       if error != nil {
-        // handle error
+        errorDescription = error.description
       } else {
         if let httpResponse = response as? NSHTTPURLResponse {
-          if httpResponse.statusCode == 200 {
-            let user = UserJSONParser.getUserFromJSONData(data!)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-              completionHandler(user, nil)
-            })
+          let status = self.checkStatusCode(httpResponse.statusCode)
+          if status.readyToParse {
+            user = UserJSONParser.getUserFromJSONData(data!)
+          } else {
+            errorDescription = status.errorDescription
           }
         }
       }
+      NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+        completionHandler(user, errorDescription)
+      })
     })
     dataTask.resume()
   }
@@ -97,19 +112,40 @@ class GitHubService {
     let url = NSURL(string: urlStr)
     let requestUrl = NSURLRequest(URL: url!)
     let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(requestUrl, completionHandler: { (data, response, error) -> Void in
+      var errorDescription: String? = nil
+      var repositories: [Repository]? = nil
       if error != nil {
-        // handle error
+        errorDescription = error.description
       } else {
         if let httpResponse = response as? NSHTTPURLResponse {
-          if httpResponse.statusCode == 200 {
-            let repos = RepoJSONParser.getUserRepositories(data!)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-              completionHandler(repos, nil)
-            })
+          let status = self.checkStatusCode(httpResponse.statusCode)
+          if status.readyToParse {
+            repositories = RepoJSONParser.getUserRepositories(data!)
+          } else {
+            errorDescription = status.errorDescription
           }
         }
       }
+      NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+        completionHandler(repositories, errorDescription)
+      })
     })
     dataTask.resume()
+  }
+  
+  private func checkStatusCode(statusCode: Int) -> (readyToParse: Bool, errorDescription: String?) {
+    var readyToParse: Bool = false
+    var errorDescription: String? = nil
+    switch statusCode {
+    case 200...299:
+      readyToParse = true
+    case 400...499:
+      errorDescription = "Oops, please try again."
+    case 500...599:
+      errorDescription = "Service is down, please try again later."
+    default:
+      errorDescription = "Try again"
+    }
+    return (readyToParse, errorDescription)
   }
 }

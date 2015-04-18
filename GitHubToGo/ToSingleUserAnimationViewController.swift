@@ -40,12 +40,13 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
     
     toVC.profileImageView.hidden = true
     
-    UIView.animateWithDuration(duration, animations: { () -> Void in
-      toVC.view.alpha = 1
-      snapShot.transform = CGAffineTransformMakeScale(self.scaleImageTransform, self.scaleImageTransform)
-      snapShot.center = toVC.profileImageView.center
-      
-    }) { (finished) -> Void in
+    UIView.animateWithDuration(duration, animations: { [weak self] () -> Void in
+      if self != nil {
+        toVC.view.alpha = 1
+        snapShot.transform = CGAffineTransformMakeScale(self!.scaleImageTransform, self!.scaleImageTransform)
+        snapShot.center = toVC.profileImageView.center
+      }
+    }) { [weak self] (finished) -> Void in
       if finished {
         toVC.profileImageView.hidden = false
         snapShot.removeFromSuperview()

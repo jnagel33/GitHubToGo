@@ -73,16 +73,18 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
       } else {
         ImageService.sharedService.fetchProfileImage(user.avatarUrl, completionHandler: { [weak self] (image) -> () in
           if self != nil {
-            if tag == cell.tag {
-              cell.avatarImageView.alpha = 0
-              cell.avatarImageView.transform = CGAffineTransformMakeScale(self!.transformSpalshEffect, self!.transformSpalshEffect)
-              user.avatarImage = image
-              let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
-              cell.avatarImageView.image = image
-              UIView.animateWithDuration(self!.animationDuration, animations: { () -> Void in
-                cell.avatarImageView.alpha = 1
-                cell.avatarImageView.transform  = CGAffineTransformMakeScale(1, 1)
-              })
+            if image != nil {
+              if tag == cell.tag {
+                cell.avatarImageView.alpha = 0
+                cell.avatarImageView.transform = CGAffineTransformMakeScale(self!.transformSpalshEffect, self!.transformSpalshEffect)
+                user.avatarImage = image
+                let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
+                cell.avatarImageView.image = image
+                UIView.animateWithDuration(self!.animationDuration, animations: { () -> Void in
+                  cell.avatarImageView.alpha = 1
+                  cell.avatarImageView.transform  = CGAffineTransformMakeScale(1, 1)
+                })
+              }
             }
           }
         })
@@ -105,7 +107,10 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     self.gitHubService.getUserSearchResults(searchBar.text, completionHandler: { [weak self] (users, error) -> Void in
       if self != nil {
         if error != nil {
-          // handle error
+          let alert = UIAlertController(title: "An error occured", message: error, preferredStyle: .Alert)
+          let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+          alert.addAction(okAction)
+          self!.presentViewController(alert, animated: true, completion: nil)
         } else {
           self!.users = users
           self!.collectionView.reloadSections(NSIndexSet(index: 0))

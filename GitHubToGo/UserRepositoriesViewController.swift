@@ -23,7 +23,10 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
     
     self.gitHubService.getRepository { [weak self] (repositories, error) -> Void in
       if self != nil {
-        
+        let alert = UIAlertController(title: "An error occured", message: error, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alert.addAction(okAction)
+        self!.presentViewController(alert, animated: true, completion: nil)
       if error != nil {
         
       } else {
