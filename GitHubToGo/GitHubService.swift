@@ -106,7 +106,7 @@ class GitHubService {
     dataTask.resume()
   }
   
-  func getRepository(completionHandler: ([Repository]?, String?) -> Void) {
+  func getRepositories(completionHandler: ([Repository]?, String?) -> Void) {
     let accessToken = NSUserDefaults.standardUserDefaults().valueForKey("accessToken") as? String
     var urlStr = "\(self.authenticatedUserReposURL)?access_token=\(accessToken!)"
     let url = NSURL(string: urlStr)

@@ -21,29 +21,28 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
     super.viewDidLoad()
     self.tableView.dataSource = self
     
-    self.gitHubService.getRepository { [weak self] (repositories, error) -> Void in
+    self.gitHubService.getRepositories { [weak self] (repositories, error) -> Void in
       if self != nil {
-        let alert = UIAlertController(title: "An error occured", message: error, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-        alert.addAction(okAction)
-        self!.presentViewController(alert, animated: true, completion: nil)
-      if error != nil {
-        
-      } else {
-        self!.repositories = repositories!
-        self!.repositories.sort({ (r1, r2) -> Bool in
-          let enUSPosixLocale = NSLocale(localeIdentifier: "en_US_POSIX")
-          self!.dateFormatter.locale = enUSPosixLocale
-          self!.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-          let date1 = self!.dateFormatter.dateFromString(r1.updatedAt!)
-          let hourDif1 = date1?.hoursFrom(NSDate())
-          
-          let date2 = self!.dateFormatter.dateFromString(r2.updatedAt!)
-          let hourDif2 = date2?.hoursFrom(NSDate())
-          
-          return hourDif1 > hourDif2
-        })
-        self!.tableView.reloadData()
+        if error != nil {
+          let alert = UIAlertController(title: "An error occured", message: error, preferredStyle: .Alert)
+          let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+          alert.addAction(okAction)
+          self!.presentViewController(alert, animated: true, completion: nil)
+        } else {
+          self!.repositories = repositories!
+          self!.repositories.sort({ (r1, r2) -> Bool in
+            let enUSPosixLocale = NSLocale(localeIdentifier: "en_US_POSIX")
+            self!.dateFormatter.locale = enUSPosixLocale
+            self!.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            let date1 = self!.dateFormatter.dateFromString(r1.updatedAt!)
+            let hourDif1 = date1?.hoursFrom(NSDate())
+            
+            let date2 = self!.dateFormatter.dateFromString(r2.updatedAt!)
+            let hourDif2 = date2?.hoursFrom(NSDate())
+            
+            return hourDif1 > hourDif2
+          })
+          self!.tableView.reloadData()
         }
       }
     }
