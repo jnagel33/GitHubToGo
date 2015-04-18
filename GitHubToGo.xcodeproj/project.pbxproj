@@ -54,7 +54,7 @@
 		430416F51AE0C97A006417DC /* RepositoryWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryWebViewController.swift; sourceTree = "<group>"; };
 		430416F71AE0D3B1006417DC /* UserRepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepositoriesViewController.swift; sourceTree = "<group>"; };
 		434A9A2D1AE1D95E00A547B0 /* UnwindSegueBackToSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegueBackToSearch.swift; sourceTree = "<group>"; };
-		434A9A311AE21A4300A547B0 /* GitHubKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubKeys.swift; sourceTree = "<group>"; };
+		434A9A311AE21A4300A547B0 /* GitHubKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubKeys.swift; path = ../GitHubKeys.swift; sourceTree = "<group>"; };
 		4387C0FF1ADC8C4C00070604 /* GitHubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387C1031ADC8C4C00070604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387C1041ADC8C4C00070604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 		4387C0F61ADC8C4C00070604 = {
 			isa = PBXGroup;
 			children = (
-				434A9A311AE21A4300A547B0 /* GitHubKeys.swift */,
 				4387C1011ADC8C4C00070604 /* GitHubToGo */,
 				4387C1171ADC8C4C00070604 /* GitHubToGoTests */,
 				4387C1001ADC8C4C00070604 /* Products */,
@@ -188,6 +187,7 @@
 		4387C16E1ADD9E7300070604 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				434A9A311AE21A4300A547B0 /* GitHubKeys.swift */,
 				43EBC4D81AE17E4400BDDFA8 /* NSDateExtension.swift */,
 				430416F31AE0BF7C006417DC /* StringExtension.swift */,
 				4387C1751ADDBB1600070604 /* OAuthService.swift */,
