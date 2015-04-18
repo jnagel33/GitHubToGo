@@ -27,6 +27,7 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
     containerView.addSubview(toVC.view)
     
     let selectedIndexPath = fromVC.collectionView.indexPathsForSelectedItems().first as! NSIndexPath
+    toVC.indexPath = selectedIndexPath
     let userCell = fromVC.collectionView.cellForItemAtIndexPath(selectedIndexPath) as! UserSearchCollectionViewCell
     let snapShot = UIImageView(image: fromVC.users[selectedIndexPath.row].avatarImage)
     userCell.hidden = true

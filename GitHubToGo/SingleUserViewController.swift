@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingleUserViewController: UIViewController {
+class SingleUserViewController: UIViewController, UINavigationControllerDelegate {
   
   @IBOutlet weak var bioIcon: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
@@ -27,6 +27,8 @@ class SingleUserViewController: UIViewController {
   let avatarImageViewSize = CGSize(width: 200, height: 200)
   let imageViewCornerRadius: CGFloat = 100
   var selectedUser: User?
+  var indexPath: NSIndexPath?
+  var controllerCountIndexMax = 3
   
   let animateHalfSecond: Double = 0.5
   let animateOneThirdSecond: Double = 0.3
@@ -38,6 +40,12 @@ class SingleUserViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    var backBarButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "unwind")
+    self.navigationItem.hidesBackButton = true;
+    self.navigationItem.leftBarButtonItem = backBarButton;
+    
+    
     if let user = selectedUser {
       self.selectedUser = user
       self.nameLabel.text = user.name
@@ -61,6 +69,30 @@ class SingleUserViewController: UIViewController {
     
     self.getUserInfo()
     self.doAnimations()
+  }
+  
+  func unwind() {
+    if self.navigationController!.viewControllers.count < controllerCountIndexMax {
+      self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    self.performSegueWithIdentifier("Unwind", sender: self)
+  }
+  
+  func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    if toVC is UserSearchViewController {
+      return UnwindSegueBackToSearch()
+    }
+    return nil
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationController!.delegate = self
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.navigationController!.delegate = nil
   }
   
   func doAnimations() {

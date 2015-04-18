@@ -154,4 +154,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
       destinationController.selectedUser = self.users[selectedIndexPath.row]
     }
   }
+  
+  @IBAction func prepareForUnwind(sender: UIStoryboardSegue) {
+  }
 }
