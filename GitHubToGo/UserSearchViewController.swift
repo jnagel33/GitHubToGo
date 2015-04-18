@@ -18,6 +18,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
   var tapGestureRecognizer: UITapGestureRecognizer?
   var avatarImageViewSize = CGSize(width: 100, height: 100)
   let avatarImageViewCornerRadius: CGFloat = 40
+  let transformSpalshEffect: CGFloat = 0.3
+  let animationDuration = 0.2
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -73,13 +75,13 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
           if self != nil {
             if tag == cell.tag {
               cell.avatarImageView.alpha = 0
-              cell.avatarImageView.transform = CGAffineTransformMakeScale(1.3, 1.3)
+              cell.avatarImageView.transform = CGAffineTransformMakeScale(self!.transformSpalshEffect, self!.transformSpalshEffect)
               user.avatarImage = image
               let resizedImage = ImageResizer.resizeImage(image!, size: self!.avatarImageViewSize)
               cell.avatarImageView.image = image
-              UIView.animateWithDuration(0.2, animations: { () -> Void in
+              UIView.animateWithDuration(self!.animationDuration, animations: { () -> Void in
                 cell.avatarImageView.alpha = 1
-                cell.avatarImageView.transform  = CGAffineTransformMakeScale(1.0, 1.0)
+                cell.avatarImageView.transform  = CGAffineTransformMakeScale(1, 1)
               })
             }
           }

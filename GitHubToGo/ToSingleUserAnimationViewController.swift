@@ -13,6 +13,7 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
   let duration = 0.5
   let imageViewCornerRadius: CGFloat = 100
   let scaleImageTransform: CGFloat = 2.5
+  let divisorHalf: CGFloat = 2
   
   func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
     return duration
@@ -32,7 +33,7 @@ class ToSingleUserAnimationViewController: NSObject, UIViewControllerAnimatedTra
     let snapShot = UIImageView(image: fromVC.users[selectedIndexPath.row].avatarImage)
     userCell.hidden = true
     snapShot.frame = containerView.convertRect(userCell.avatarImageView.frame, fromCoordinateSpace: userCell.avatarImageView.superview!)
-    snapShot.layer.cornerRadius = snapShot.frame.width / 2
+    snapShot.layer.cornerRadius = snapShot.frame.width / self.divisorHalf
     snapShot.layer.masksToBounds = true
     containerView.addSubview(snapShot)
     toVC.view.layoutIfNeeded()

@@ -15,32 +15,33 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
   var repositories = [Repository]()
   let gitHubService = GitHubService()
   var minutesInAnHour: Int = 60
+  var dateFormatter = NSDateFormatter()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.dataSource = self
     
-    self.gitHubService.getRepository { (repositories, error) -> Void in
+    self.gitHubService.getRepository { [weak self] (repositories, error) -> Void in
+      if self != nil {
+        
       if error != nil {
         
       } else {
-        var repos = repositories!
-        repos.sort({ (r1, r2) -> Bool in
-          let dateFormatter = NSDateFormatter()
+        self!.repositories = repositories!
+        self!.repositories.sort({ (r1, r2) -> Bool in
           let enUSPosixLocale = NSLocale(localeIdentifier: "en_US_POSIX")
-          dateFormatter.locale = enUSPosixLocale
-         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-          let date1 = dateFormatter.dateFromString(r1.updatedAt!)
+          self!.dateFormatter.locale = enUSPosixLocale
+          self!.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+          let date1 = self!.dateFormatter.dateFromString(r1.updatedAt!)
           let hourDif1 = date1?.hoursFrom(NSDate())
           
-          let date2 = dateFormatter.dateFromString(r2.updatedAt!)
+          let date2 = self!.dateFormatter.dateFromString(r2.updatedAt!)
           let hourDif2 = date2?.hoursFrom(NSDate())
           
           return hourDif1 > hourDif2
         })
-        self.repositories = repos
-        self.tableView.reloadData()
-        
+        self!.tableView.reloadData()
+        }
       }
     }
   }
@@ -56,23 +57,22 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier("UserRepoCell", forIndexPath: indexPath) as! UITableViewCell
     cell.textLabel!.text = repositories[indexPath.row].name
     
-    let dateFormatter = NSDateFormatter()
     let enUSPosixLocale = NSLocale(localeIdentifier: "en_US_POSIX")
-    dateFormatter.locale = enUSPosixLocale
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-    let date = dateFormatter.dateFromString(repositories[indexPath.row].updatedAt!)
+    self.dateFormatter.locale = enUSPosixLocale
+    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    let date = self.dateFormatter.dateFromString(repositories[indexPath.row].updatedAt!)
     
-    var displayText = ""
-    let dayDif = date?.daysFrom(NSDate())
-    let hourDif = date?.hoursFrom(NSDate())
-    let minuteDif = date?.minutesFrom(NSDate())
-    if hourDif == 0 {
-      displayText = "\(abs(minuteDif!)) minutes ago"
-    } else if dayDif == 0 {
-    let minuteRemainder = hourDif! % self.minutesInAnHour
-      displayText = "\(abs(hourDif!)) hours, \(abs(minuteRemainder)) minutes ago"
+    var displayText: String!
+    let dayDifference = date?.daysFrom(NSDate())
+    let hourDifference = date?.hoursFrom(NSDate())
+    let minuteDifference = date?.minutesFrom(NSDate())
+    if hourDifference == 0 {
+      displayText = "\(abs(minuteDifference!)) minutes ago"
+    } else if dayDifference == 0 {
+    let minuteRemainder = hourDifference! % self.minutesInAnHour
+      displayText = "\(abs(hourDifference!)) hours, \(abs(minuteRemainder)) minutes ago"
     } else {
-      displayText = "\(abs(dayDif!)) days"
+      displayText = "\(abs(dayDifference!)) days"
     }
     cell.detailTextLabel!.text = displayText
     

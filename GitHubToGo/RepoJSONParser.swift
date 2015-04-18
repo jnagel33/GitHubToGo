@@ -22,7 +22,6 @@ class RepoJSONParser {
       description = item["description"] as? String,
             score = item["score"] as? Double,
             owner = item["owner"] as? [String: AnyObject],
-//          ownerId = owner["id"] as? Int,
             login = owner["login"] as? String,
         avatarUrl = owner["avatar_url"] as? String,
         updatedAt = item["updated_at"] as? String {
