@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
+class UserRepositoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -20,6 +20,7 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.dataSource = self
+    self.tableView.delegate = self
     
     self.gitHubService.getRepositories { [weak self] (repositories, error) -> Void in
       if self != nil {
@@ -79,6 +80,13 @@ class UserRepositoriesViewController: UIViewController, UITableViewDataSource {
     cell.detailTextLabel!.text = displayText
     
     return cell
+  }
+  
+  //MARK:
+  //MARK: UITableViewDelegate
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
   //MARK:
