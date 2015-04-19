@@ -14,6 +14,12 @@ class RepoSearchTableViewCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var userLabel: UILabel!
   
+  override func awakeFromNib() {
+    self.contentView.frame = self.bounds;
+    self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+  }
+  
+  
   let imageViewSize = CGSize(width: 75, height: 75)
   
   func configureCell(repository: Repository) {
